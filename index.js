@@ -19,7 +19,12 @@ app.use(bodyParser.json());
 
 app.listen(PORT, async () => {
   console.log(process.env.URI);
-  await mongoose.connect(process.env.URI);
+  await mongoose
+    .connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(
+      () => console.log("successfully connected"),
+      (err) => console.log(err)
+    );
 
   console.log("server is listening to the port:", PORT);
 
