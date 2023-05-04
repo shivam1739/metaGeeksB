@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const dbUri = require("./config/db.config");
 const PORT = require("./config/server.config");
@@ -16,6 +17,7 @@ userRoutes(app);
 coustomerRoute(app);
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.listen(PORT, async () => {
   console.log(process.env.URI);
