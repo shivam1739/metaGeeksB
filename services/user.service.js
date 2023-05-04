@@ -5,6 +5,7 @@ require("dotenv").config();
 const roleConstants = require("../constants/user.constants");
 
 const createUser = async (data, params) => {
+  console.log(data, "data=============");
   try {
     const userObj = {
       name: data.name,

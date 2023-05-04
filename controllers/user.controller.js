@@ -5,6 +5,7 @@ require("dotenv").config();
 //signup function
 exports.signup = async (req, res) => {
   try {
+    console.log(req.body, "=======================");
     const result = await userService.createUser(req.body, req.params);
     let statusCode;
     let response;
@@ -15,12 +16,16 @@ exports.signup = async (req, res) => {
       statusCode = 201;
       response = result;
     }
-    res.status(statusCode).send({
-      result: response,
+    return res.json({
+      message: "succsessfull signup",
+      code: 200,
+      success: true,
+      data: response,
     });
   } catch (err) {
-    res.status(500).send({
-      result: err,
+    return res.json({
+      err: err,
+      statusCode: 500,
     });
   }
 };
@@ -45,14 +50,15 @@ exports.signin = async (req, res) => {
       response = {
         message: "user Validated",
         token: token,
+        success: true,
+        statusCode: 200,
       };
     }
-    res.status(statusCode).send({
-      result: response,
-    });
+    return res.json(response);
   } catch (err) {
-    res.status(500).send({
-      result: err,
+    return res.json({
+      err: err,
+      statusCode: 500,
     });
   }
 };
