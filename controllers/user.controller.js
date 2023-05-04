@@ -9,7 +9,7 @@ exports.signup = async (req, res) => {
     const result = await userService.createUser(req.body, req.params);
     let statusCode;
     let response;
-    if (result.error) {
+    if (!result) {
       statusCode = 403;
       response = result;
     } else {
@@ -37,7 +37,7 @@ exports.signin = async (req, res) => {
     console.log(result);
     let statusCode;
     let response;
-    if (result.error) {
+    if (!result) {
       statusCode = 401;
       response = result.error;
     } else {
