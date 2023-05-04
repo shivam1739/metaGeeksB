@@ -1,3 +1,4 @@
-const mongoDbUri = "mongodb://127.0.0.1:27017/manager";
+require("dotenv").config();
+const mongoDbUri = process.env.URI;
 
-module.exports = mongoDbUri
+module.exports = mongoDbUri;
