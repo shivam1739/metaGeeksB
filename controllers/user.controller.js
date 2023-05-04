@@ -10,11 +10,12 @@ exports.signup = async (req, res) => {
     let statusCode;
     let response;
     if (!result) {
-      statusCode = 403;
-      response = result;
-    } else {
-      statusCode = 201;
-      response = result;
+      return res.json({
+        message: "invalid email and password",
+        code: 400,
+        success: true,
+        data: response,
+      });
     }
     return res.json({
       message: "succsessfull signup",
