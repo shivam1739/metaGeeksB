@@ -17,7 +17,7 @@ userRoutes(app);
 coustomerRoute(app);
 
 app.use(bodyParser.json());
-app.use(cors({ origin: "http://localhost:3001" }));
+app.use(cors());
 
 app.listen(PORT, async () => {
   console.log(process.env.URI);
